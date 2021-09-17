@@ -36,8 +36,9 @@ def decrypt(text, s):
     
     return decryptedText
     
-print ("Plain text: " + userInput2)
-print ("Shift key: " + str(userInput))
-encrypted = encrypt(userInput2,userInput)
-print ("Cipher: " + encrypted)
-print ("Decrypted: " + decrypt(encrypted, userInput))
+# testing to ensure that the encryption works properly
+#print ("Plain text: " + userInput2)
+#print ("Shift key: " + str(userInput))
+#encrypted = encrypt(userInput2,userInput)
+#print ("Cipher: " + encrypted)
+#print ("Decrypted: " + decrypt(encrypted, userInput))

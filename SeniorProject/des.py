@@ -5,7 +5,6 @@
 #
 #
 #
-import cryptography
 from cryptography.fernet import Fernet
 
 # methods for genereating keys, storing keys, and retrieving keys
@@ -13,7 +12,22 @@ from cryptography.fernet import Fernet
 def gen_key():
     # generate the key needed for DES encryption and decryption (symmetric key)
     key = Fernet.generate_key()
-    with open('deskey.key', 'wb') as file:
+    with open("secretkey.key", "wb") as file:
         file.write(key)
 
-print(0)
+def load_key():
+    return open("secretkey.key", "rb").read()
+
+def encrypt_message(message):
+    gen_key()
+
+    f = Fernet(load_key())
+
+    message_enc = message.encode()
+
+    encrypted_message = f.encrypt(message_enc)
+
+message = "test message"
+
+print("original string: ", message)
+print("enc string: ", encrypt_message(message))
