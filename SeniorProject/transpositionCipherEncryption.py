@@ -14,7 +14,7 @@ def encrypt(key,message):
     return ''.join(ciphertext)
 
 # testing to ensure the encryption works properly
-#ciphertext = encrypt(userInput2, userInput)
+# ciphertext = encrypt(userInput2, userInput)
 
-#print("Cipher text is: ")
-#print(ciphertext)
+# print("Cipher text is: ")
+# print(ciphertext)

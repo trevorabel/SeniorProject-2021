@@ -22,7 +22,7 @@ def decrypt(key,message):
 
 
 # testing to ensure the decryption works properly
-#originalText = decrypt(userInput2,userInput)
+# originalText = decrypt(userInput2,userInput)
 
-#print("Original text is: ")
-#print(originalText)
+# print("Original text is: ")
+# print(originalText)
