@@ -6,3 +6,5 @@
 //11/7/2022
     - DES cipher complete.
         - See des.py for test cases (lines 88-124)
+    - AES256 cipher complete.
+        - See aes256.py for test cases (lines 83-101)
