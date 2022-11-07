@@ -2,14 +2,14 @@
 #
 # Sources
 # Storing, loading, and creating keys in python: www.devaq.io/encrypt-decrypt-data-python
-#
-#
-#
+# Single DES: https://pycryptodome.readthedocs.io/en/latest/src/cipher/des.html
+# Modern Modes of Operation for Symmetric Block Ciphers: https://pycryptodome.readthedocs.io/en/latest/src/cipher/modern.html#eax-mode
+
 from Crypto.Cipher import DES
 from Crypto.Random import get_random_bytes
-# from cryptography.fernet import Fernet
 
-skey = b'-8B key-'
+# Test key for inital tesing of DES functionality 
+# skey = b'-8B key-'
 
 # methods for genereating keys, storing keys, and retrieving keys
 
@@ -40,7 +40,7 @@ def encrypt_message(message,key):
         print("Export of variable cipherStore aka nonce complete. Proceeding with encryption.")
 
 
-    encrpyted, tag = DEScipher.encrypt_and_digest(message.encode('ascii'))
+    encrpyted, tag = DEScipher.encrypt_and_digest(message)
 
     # writing out created variable tag needed for validity checking while decryption to ensure authenticity of the message
     with open("desEncryptedTag.txt", "wb") as file:
@@ -72,11 +72,11 @@ def decrypt_message(message,key,cipherStore,tag):
     try:
         #condition to verify the tag from the encrypted message
         decryptCipher.verify(tag)
-
+        
         # writing encryption out to a file to be stored for decryption
         with open("desDecrypted.txt", "wb") as file:
             file.write(decrypt)
-            print("Export of variable encrypted aka DES encrypted text complete. Finished with encryption process. Returning to Menu.")
+            print("Tag matches original tag, export of variable decrypt aka DES decrypted text complete. Finished with decryption process. Returning to Menu.")
 
         # # Test block below to return within the class to test the functionality of the DES class
         # #return plaintext/decrypted message if true
@@ -84,8 +84,6 @@ def decrypt_message(message,key,cipherStore,tag):
     except:
         print("Error in decryption original text and decrypted text do not match!")
         return False
-
-# custom_key = input("Please enter an 8-bit")
 
 # # Test code for ensuring that the functionality of this code works.
 # text = "test message"
@@ -107,11 +105,20 @@ def decrypt_message(message,key,cipherStore,tag):
 # print("Encryption complete!")
 # 
 # # Testing the pass through capabilities of the DES decryption method and compatibility of saved files for Key, Encrypted message, CipherStore/Nonce, and Tag
-msg = "hello world"
-
-gen_key()
-encrypt_message(msg,key=load_key())
-print("Encryption complete!")
-
-decrypt_message(message=open("desEncrypted.txt", "rb").read(),key=load_key(),cipherStore=open("desCipherStore_nonce.txt", "rb").read(), tag=open("desEncryptedTag.txt", "rb").read())
-print("Decryption complete!")
+# msg = "hello world"
+# 
+# gen_key()
+# encrypt_message(msg,key=load_key())
+# print("Encryption complete!")
+# 
+# decrypt_message(message=open("desEncrypted.txt", "rb").read(),key=load_key(),cipherStore=open("desCipherStore_nonce.txt", "rb").read(), tag=open("desEncryptedTag.txt", "rb").read())
+# print("Decryption complete!")
+# 
+# Testing the pass through capabilities of the DES encryption and decrpyion method and compatibility of saved files for Message, Key, Encrypted message, CipherStore/Nonce, and Tag# 
+# msg=open("test.txt", "rb").read()
+# gen_key()
+# encrypt_message(msg,key=load_key())
+# print("Encryption complete!")
+# 
+# decrypt_message(message=open("desEncrypted.txt", "rb").read(),key=load_key(),cipherStore=open("desCipherStore_nonce.txt", "rb").read(), tag=open("desEncryptedTag.txt", "rb").read())
+# print("Decryption complete!")
