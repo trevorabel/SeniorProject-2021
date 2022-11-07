@@ -8,3 +8,5 @@
         - See des.py for test cases (lines 88-124)
     - AES256 cipher complete.
         - See aes256.py for test cases (lines 83-101)
+    - RC2 cipher complete.
+        - See RC2.py for test cases (lines 83-98)
